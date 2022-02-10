@@ -1,2 +1,4 @@
-package oopsConcept;public class LearnAboutClasses {
+package oopsConcept;
+
+public class LearnAboutClasses {
 }
