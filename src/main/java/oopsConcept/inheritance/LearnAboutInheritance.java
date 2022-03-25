@@ -1,4 +1,6 @@
-package oopsConcept;
+package oopsConcept.inheritance;
 
 public class LearnAboutInheritance {
+
+
 }
