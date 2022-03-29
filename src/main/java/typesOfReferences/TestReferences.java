@@ -26,8 +26,7 @@ public class TestReferences {
     public static void main(String[] args) {
 //        strongReference();
 //        weakReference();
-        // weak references are of 2 types: soft and phantom
-//        softReference();
+        softReference();
 //        phantomReference();
     }
 
@@ -59,6 +58,11 @@ public class TestReferences {
         System.out.println(emp.get());
         employee = emp.get();
         System.out.println("After null: " + employee.toString());
+
+        employee=null;
+        System.gc();
+        System.out.println("After GC operation: ");
+        System.out.println(emp.get());
     }
 
     // is marked for garbage collection as soon as strong reference is made null
@@ -79,6 +83,12 @@ public class TestReferences {
         System.out.println(emp.get());
         employee = emp.get();
         System.out.println("After null: " + employee.toString());
+
+        employee=null;
+        System.gc();
+        System.out.println("After GC operation: ");
+        System.out.println(emp.get());
+
     }
 
     //garbage is collected only when the object reference is made null
