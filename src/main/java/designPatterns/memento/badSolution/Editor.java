@@ -1,11 +1,11 @@
 package designPatterns.memento.badSolution;
 
-import java.util.Stack;
+import java.util.ArrayDeque;
+import java.util.Deque;
 
 public class Editor {
 
-    Stack stack = new Stack<String>();
-
+    Deque<String> stack = new ArrayDeque<>();
 
     public String getContent() {
         return stack.toString();
@@ -14,8 +14,6 @@ public class Editor {
     public void setContent(String content) {
         stack.push(content);
     }
-
-    private String content;
 
     public void undo() {
         stack.pop();

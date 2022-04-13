@@ -2,8 +2,8 @@ package typesOfReferences;
 
 public class Employee {
 
-    private int id;
-    private String name;
+    private final int id;
+    private final String name;
 
     public Employee(int id, String name) {
         this.id = id;

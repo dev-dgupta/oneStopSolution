@@ -16,10 +16,10 @@ public class LoadProperties {
             Properties p = new Properties();
             p.load(reader);
 
-            Class clazz = Class.forName(p.getProperty(factoryKey));
-            Constructor constructor = clazz.getConstructor();
+            Class<AnimalFactory> clazz = (Class<AnimalFactory>) Class.forName(p.getProperty(factoryKey));
+            Constructor<AnimalFactory> constructor = clazz.getConstructor();
 
-            return (AnimalFactory) constructor.newInstance();
+            return constructor.newInstance();
         } catch (Exception ex) {
             throw new IllegalArgumentException("Factory with provided name could not be instantiated..!!");
         }

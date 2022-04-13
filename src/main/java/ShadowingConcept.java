@@ -1,7 +1,7 @@
 public class ShadowingConcept {
 
 
-    private static int num=10;
+    private static final int num=10;
 
 
     public static void main(String[] args) {

@@ -8,5 +8,5 @@ import java.util.Optional;
 // an abstract implementation given for the creation of objects
 public interface AnimalFactory {
 
-    Animal createAnimal(AnimalType petType, Optional<String> animalName);
+    Animal createAnimal(AnimalType petType, String animalName);
 }

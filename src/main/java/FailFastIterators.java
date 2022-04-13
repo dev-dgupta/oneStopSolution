@@ -20,11 +20,9 @@ public class FailFastIterators extends Thread {
         courses.add("Python");
         courses.add("Docker");
 
-        Iterator<String> it = courses.iterator();
-
-        while (it.hasNext()) {
+        for (String cours : courses) {
             Thread.sleep(1000);
-            System.out.println(it.next());
+            System.out.println(cours);
         }
 
         System.out.println(courses);

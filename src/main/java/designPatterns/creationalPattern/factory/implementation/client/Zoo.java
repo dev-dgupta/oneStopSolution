@@ -6,7 +6,7 @@ import designPatterns.creationalPattern.factory.implementation.products.Animal;
 
 public class Zoo {
 
-    private AnimalFactory factory;
+    private final AnimalFactory factory;
 
     public Zoo(AnimalFactory factory) {
         this.factory = factory;

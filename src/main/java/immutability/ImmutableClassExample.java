@@ -16,21 +16,13 @@ public final class ImmutableClassExample implements Cloneable{
         this.keyValueMap = getKeyValueMap(keyValueMap);
     }
 
-    public int getId() {
-        return id;
-    }
-
     public String getName() {
         return name;
     }
 
     //deep cloning
     public List<String> getListOfCourses(List<String> listOfCourses) {
-        var newListOfCourses = new ArrayList<String>();
-        for (String obj : listOfCourses) {
-            newListOfCourses.add(obj);
-        }
-        return newListOfCourses;
+        return new ArrayList<>(listOfCourses);
     }
 
     // deep cloning
@@ -52,18 +44,18 @@ public final class ImmutableClassExample implements Cloneable{
                 '}';
     }
 
-//    @Override
-//    public boolean equals(Object o) {
-//        if (this == o) return true;
-//        if (o == null || getClass() != o.getClass()) return false;
-//        ImmutableClassExample that = (ImmutableClassExample) o;
-//        return id == that.id && Objects.equals(name, that.name) && Objects.equals(listOfCourses, that.listOfCourses) && Objects.equals(keyValueMap, that.keyValueMap);
-//    }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ImmutableClassExample that = (ImmutableClassExample) o;
+        return id == that.id && Objects.equals(name, that.name) && Objects.equals(listOfCourses, that.listOfCourses) && Objects.equals(keyValueMap, that.keyValueMap);
+    }
 
-//    @Override
-//    public int hashCode() {
-//        return Objects.hash(id, name, listOfCourses, keyValueMap);
-//    }
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, listOfCourses, keyValueMap);
+    }
 
     @Override
     protected Object clone() throws CloneNotSupportedException {

@@ -21,13 +21,10 @@ public class PetStore {
     }
 
     private Animal orderPet(AnimalType petType, String petName) {
-        switch (petType) {
-            case DOG:
-                return new Dog(petName);
-            case CAT:
-                return new Cat(petName);
-            default:
-                throw new IllegalArgumentException("Pet not found.");
-        }
+        return switch (petType) {
+            case DOG -> new Dog(petName);
+            case CAT -> new Cat(petName);
+            default -> throw new IllegalArgumentException("Pet not found.");
+        };
     }
 }

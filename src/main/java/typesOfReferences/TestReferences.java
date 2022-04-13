@@ -2,6 +2,7 @@ package typesOfReferences;
 
 import java.lang.ref.SoftReference;
 import java.lang.ref.WeakReference;
+import java.util.Objects;
 
 /*
 *
@@ -50,14 +51,14 @@ public class TestReferences {
     // If object is cleared from the memory, it will return null.
     private static void softReference() {
         Employee employee = new Employee(1, "John");   //not eligible for GC
-        SoftReference<Employee> emp = new SoftReference(employee);
+        SoftReference<Employee> emp = new SoftReference<>(employee);
         System.out.println("Before null: " + employee.toString());
         employee = null;     //eligible for GC
         System.out.println("Employee: " + employee);
         // you get the employee object back, if yet not cleared from memory
         System.out.println(emp.get());
         employee = emp.get();
-        System.out.println("After null: " + employee.toString());
+        System.out.println("After null: " + Objects.requireNonNull(employee).toString());
 
         employee=null;
         System.gc();
@@ -75,14 +76,14 @@ public class TestReferences {
     // like for soft references
     private static void weakReference() {
         Employee employee = new Employee(1, "John");   //not eligible for GC
-        WeakReference<Employee> emp = new WeakReference(employee);
+        WeakReference<Employee> emp = new WeakReference<>(employee);
         System.out.println("Before null: " + employee.toString());
         employee = null;     //eligible for GC, also emp is available for garbage collection (with value intact).
         System.out.println("Employee: " + employee);
         //employee object can be retrieved by get() method until the emp gets GCed by JVM
         System.out.println(emp.get());
         employee = emp.get();
-        System.out.println("After null: " + employee.toString());
+        System.out.println("After null: " + Objects.requireNonNull(employee).toString());
 
         employee=null;
         System.gc();

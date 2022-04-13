@@ -1,8 +1,4 @@
 package multithreading.producerConsumerProblem.volatileProblems;
-
-
-import java.util.Enumeration;
-
 /*
  * You have 3 threads.
  *
@@ -24,7 +20,7 @@ import java.util.Enumeration;
 public class ThreadSequenceGenerator {
 
     private static int threadIdToRun = 1;
-    private static Object object = new Object();
+    private static final Object object = new Object();
     private static int number = 1;
     public static void main(String[] args) {
 
@@ -40,8 +36,7 @@ public class ThreadSequenceGenerator {
 
     static class Print implements Runnable {
 
-        private int threadId;
-
+        private final int threadId;
 
         public Print(int threadId) {
             this.threadId = threadId;
@@ -59,21 +54,21 @@ public class ThreadSequenceGenerator {
                         }
                     } else {
                         switch (threadId) {
-                            case 1:
+                            case 1 -> {
                                 System.out.println("T" + threadId + ": " + number);
                                 threadIdToRun = 2;
                                 number += 1;
-                                break;
-                            case 2:
+                            }
+                            case 2 -> {
                                 System.out.println("T" + threadId + ": " + number);
                                 threadIdToRun = 3;
                                 number += 1;
-                                break;
-                            case 3:
+                            }
+                            case 3 -> {
                                 System.out.println("T" + threadId + ": " + number);
                                 threadIdToRun = 1;
                                 number += 1;
-                                break;
+                            }
                         }
 
                         object.notifyAll();
