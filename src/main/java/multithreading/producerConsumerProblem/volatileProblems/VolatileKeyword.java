@@ -1,22 +1,41 @@
 package multithreading.producerConsumerProblem.volatileProblems;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 public class VolatileKeyword {
 
-    static class Message implements Runnable{
-        volatile String msg;
+    private static final Logger LOGGER = Logger.getAnonymousLogger();
+    private static volatile int CURR_VAL = 0;
 
-        public Message(String msg) {
-            this.msg = msg;
-        }
+    public static void main(String[] args) {
+        new ChangeListener().start();
+        new ChangeMaker().start();
+    }
 
-        @Override
+    static class ChangeListener extends Thread {
+
         public void run() {
-            printMsg();
+            int localVal = CURR_VAL;
+            while (localVal < 5) {
+                if (localVal != CURR_VAL) {
+                    LOGGER.log(Level.INFO, "Got change for volatile var: " + CURR_VAL);
+                    localVal = CURR_VAL;
+                }
+            }
         }
 
-        public void printMsg(){
-            for(int i=0;i<msg.length();i++){
-                System.out.println(msg.charAt(i));
+    }
+
+    // every time the thread changeMaker makes any change to volatile variable
+    // CURR_VAL, the changes is listened by ChangeListener
+    static class ChangeMaker extends Thread {
+        public void run() {
+
+            int localVal = CURR_VAL;
+            while (CURR_VAL < 5) {
+                CURR_VAL = ++localVal;
+                LOGGER.log(Level.INFO, "Incremented the CURR_VAL: " + CURR_VAL);
                 try {
                     Thread.sleep(1000);
                 } catch (InterruptedException e) {
@@ -25,16 +44,4 @@ public class VolatileKeyword {
             }
         }
     }
-
-    public static void main(String[] args) {
-        Message m1=new Message("Welcome");
-        Message m2=new Message("Java");
-
-        Thread t1=new Thread(m1);
-        Thread t2=new Thread(m2);
-        t1.start();
-        t2.start();
-
-    }
-
 }

@@ -1,6 +1,6 @@
 package multithreading.producerConsumerProblem;
 
-public class SynchronizationOfThreads {
+public class ClassLevelLocks {
 
     static class Message implements Runnable {
 
@@ -34,7 +34,11 @@ public class SynchronizationOfThreads {
         // but that would only make the calling object synchronized and not the object we are working on.
         public void printMsg() {
             // here the two objects have their own set of methods and msg variable
-            synchronized (msg) {
+            // to synchronize that the two threads run one after the another, we can take up CLass level
+            // locking instead of locking on the msg (String) object
+            // since the object is different for both the threads
+            // but the method they need to access is in the same class
+            synchronized (Message.class) {
                 for (int i = 0; i < msg.length(); i++) {
                     System.out.print(msg.charAt(i));
                     try {
@@ -58,6 +62,7 @@ public class SynchronizationOfThreads {
         // so they can print the msg in any way
         t1.start();
         t2.start();
+
     }
 
 

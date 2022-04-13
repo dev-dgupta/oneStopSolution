@@ -17,7 +17,7 @@ package multithreading.producerConsumerProblem.volatileProblems;
  *
  *
  * */
-public class ThreadSequenceGenerator {
+public class SequenceGeneratorUsingSynchronize {
 
     private static int threadIdToRun = 1;
     private static final Object object = new Object();
