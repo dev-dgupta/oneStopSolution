@@ -1,8 +1,8 @@
 package java8.traditional;
 
-import java8.ConcatenateStr;
-import java8.IncrementByFive;
-import java8.Message;
+import java8.lambdaExpressions.ConcatenateStr;
+import java8.lambdaExpressions.IncrementByFive;
+import java8.lambdaExpressions.Message;
 
 public class TraditionalExample implements ConcatenateStr, IncrementByFive, Message {
     @Override

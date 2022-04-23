@@ -1,4 +1,4 @@
-package java8.lambdaExpressions;
+package java8.traditional;
 
 public class RunnableExample {
 

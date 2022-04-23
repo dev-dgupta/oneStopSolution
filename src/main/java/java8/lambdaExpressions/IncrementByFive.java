@@ -1,4 +1,4 @@
-package java8;
+package java8.lambdaExpressions;
 
 
 // interfaces with only 1 abstract method

@@ -1,10 +1,6 @@
 package java8.lambdaExpressions;
 
 
-import java8.ConcatenateStr;
-import java8.IncrementByFive;
-import java8.Message;
-
 // reduces the lines of code
 public class LambdaExample {
 
