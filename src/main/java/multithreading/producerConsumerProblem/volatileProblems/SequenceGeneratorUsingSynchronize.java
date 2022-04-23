@@ -45,6 +45,8 @@ public class SequenceGeneratorUsingSynchronize {
         @Override
         public void run() {
             while (number != 10) {
+                // works without volatile because the block is synchronized on object,
+                // which can be accessed by a single thread at a time.
                 synchronized (object) {
                     if (threadId != threadIdToRun) {
                         try {
