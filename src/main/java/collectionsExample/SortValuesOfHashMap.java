@@ -1,9 +1,6 @@
 package collectionsExample;
 
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 
 import static java.util.Map.Entry.comparingByValue;
 
@@ -37,7 +34,7 @@ public class SortValuesOfHashMap {
             freqMap.entrySet().stream()
                     .sorted(Map.Entry.<String,Integer>comparingByValue().reversed())
                     .forEach(record-> {
-
+                        System.out.println(record.getKey() + "-" + record.getValue());
                     });
         }
     }
