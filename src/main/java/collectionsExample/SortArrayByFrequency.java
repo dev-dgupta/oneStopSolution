@@ -1,6 +1,7 @@
 package collectionsExample;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 /*
  * The task is to sort the array arr[] according to the frequency of elements in decreasing order.
@@ -42,8 +43,21 @@ public class SortArrayByFrequency {
                 });
 
 
+        Map<Integer, Integer> freqMap1 = freqMap.entrySet().stream()
+                .sorted(Map.Entry.<Integer, Integer>comparingByValue().reversed())
+                .collect(
+                    Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (oldValue, newValue)
+                -> oldValue, LinkedHashMap::new));
+
+
         System.out.println("*********First element appears first************");
         System.out.println(sortedList);
+
+        System.out.println(freqMap);
+        System.out.println(freqMap1);
+
+
+
     }
 
     /*
